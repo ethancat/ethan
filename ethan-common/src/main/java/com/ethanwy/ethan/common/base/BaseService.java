@@ -1,6 +1,5 @@
 package com.ethanwy.ethan.common.base;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -9,42 +8,93 @@ import java.util.List;
  * @author Ethan
  * @date 2018/12/18
  */
-public interface BaseService<E,PK extends Serializable> {
+public interface BaseService<E extends AbstractEntity, M extends BaseMapper<?, ?>> {
 
     /**
      * 新增
+     *
+     * @param entity
+     * @return
      */
     int insert(E entity);
 
     /**
      * 批量新增
+     *
+     * @param entities
+     * @return
      */
     int insert(List<E> entities);
 
     /**
-     * 根据ID删除
+     * 根据主键删除
+     *
+     * @param id
+     * @return
      */
-    int delete(PK id);
+    int deleteById(Long id);
 
     /**
-     * 根据ID批量删除
+     * 根据主键列表删除
+     *
+     * @param ids
+     * @return
      */
-    int delete(List<PK> ids);
+    int deleteByIds(List<Long> ids);
 
     /**
-     * 修改
+     * 删除
+     *
+     * @param entity
+     * @return
+     */
+    int delete(E entity);
+
+    /**
+     * 批量删除
+     *
+     * @param entities
+     * @return
+     */
+    int delete(List<E> entities);
+
+    /**
+     * 更新
+     *
+     * @param entity
+     * @return
      */
     int update(E entity);
 
     /**
-     * 批量修改
+     * 批量更新
+     *
+     * @param entities
+     * @return
      */
     int update(List<E> entities);
 
     /**
-     * 根据ID查询
+     * 根据主键查询
+     *
+     * @param id
+     * @return
      */
-    List<E> select(PK id);
+    E select(Long id);
 
-    List<E> selectByPage(Integer pageNum, Integer pageSize);
+    /**
+     * 根据属性查询
+     *
+     * @param entity
+     * @return
+     */
+    List<E> select(E entity);
+
+    /**
+     * 查询所有
+     *
+     * @return
+     */
+    List<E> select();
+
 }

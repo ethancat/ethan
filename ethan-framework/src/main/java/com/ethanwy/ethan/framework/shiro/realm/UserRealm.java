@@ -6,6 +6,7 @@ import com.ethanwy.ethan.framework.base.service.BaseUserService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
@@ -43,12 +44,14 @@ public class UserRealm extends AuthorizingRealm {
     /**
      * 登录认证
      *
-     * @param token
+     * @param AToken
      * @return
      * @throws AuthenticationException
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken AToken) throws AuthenticationException {
+        UsernamePasswordToken token = (UsernamePasswordToken) AToken;
+        String userName = token.getUsername();
         return null;
     }
 }

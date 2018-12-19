@@ -1,5 +1,7 @@
 package com.ethanwy.ethan.common.base;
 
+import com.ethanwy.ethan.common.exception.MapperException;
+
 import java.util.List;
 
 /**
@@ -96,5 +98,12 @@ public interface BaseService<E extends AbstractEntity, M extends BaseMapper<?, ?
      * @return
      */
     List<E> select();
+
+    /**
+     * 获取Mapper
+     *
+     * @return mapper
+     */
+    M getMapper();
 
 }

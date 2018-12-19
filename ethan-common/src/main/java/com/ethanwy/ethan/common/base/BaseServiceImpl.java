@@ -1,7 +1,12 @@
 package com.ethanwy.ethan.common.base;
 
+import com.ethanwy.ethan.common.exception.MapperException;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * service抽象实现类
@@ -12,12 +17,7 @@ import java.util.List;
 public abstract class BaseServiceImpl<E extends AbstractEntity, M extends BaseMapper<E, M>>
         implements BaseService<E, M> {
 
-    /**
-     * 获取mapper
-     *
-     * @return
-     */
-    public abstract BaseMapper<E, M> getMapper();
+    private static final Logger LOGGER = LoggerFactory.getLogger(BaseServiceImpl.class);
 
     @Override
     public int insert(E entity) {
@@ -77,4 +77,21 @@ public abstract class BaseServiceImpl<E extends AbstractEntity, M extends BaseMa
     public List<E> select() {
         return getMapper().selectAll();
     }
+
+    @Override
+    public final M getMapper() {
+        M mapper = doGetMapper();
+        if (mapper == null) {
+            throw new MapperException("mapper is null !");
+        }
+        LOGGER.debug("Looked up Mapper from doGetMapper", mapper);
+        return mapper;
+    }
+
+    /**
+     * 获取Mapper
+     *
+     * @return mapper
+     */
+    protected abstract M doGetMapper();
 }

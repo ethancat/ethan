@@ -7,6 +7,6 @@ import com.ethanwy.ethan.framework.base.model.AbstractRole;
  * @author Ethan
  * @date 2018/12/19
  */
-public interface BaseRoleMapper extends BaseMapper<AbstractRole, BaseRoleMapper> {
+public interface BaseRoleMapper<E extends AbstractRole> extends BaseMapper{
 
 }

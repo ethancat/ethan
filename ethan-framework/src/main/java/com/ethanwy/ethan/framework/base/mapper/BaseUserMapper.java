@@ -7,6 +7,6 @@ import com.ethanwy.ethan.framework.base.model.AbstractUser;
  * @author Ethan
  * @date 2018/12/19
  */
-public interface BaseUserMapper extends BaseMapper<AbstractUser,BaseUserMapper> {
-
+public interface BaseUserMapper<E extends Integer> extends BaseMapper{
+    
 }

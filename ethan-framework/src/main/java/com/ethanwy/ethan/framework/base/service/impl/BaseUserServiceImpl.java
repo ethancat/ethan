@@ -11,18 +11,6 @@ import org.springframework.stereotype.Service;
  * @author Ethan
  * @date 2018/12/19
  */
-@Service
-public class BaseUserServiceImpl extends BaseServiceImpl<AbstractUser, BaseUserMapper> implements BaseUserService {
+public abstract class BaseUserServiceImpl<E extends AbstractUser, M extends BaseUserMapper> extends BaseServiceImpl implements BaseUserService {
 
-    private final BaseUserMapper baseUserMapper;
-
-    @Autowired
-    public BaseUserServiceImpl(BaseUserMapper baseUserMapper) {
-        this.baseUserMapper = baseUserMapper;
-    }
-
-    @Override
-    protected BaseUserMapper doGetMapper() {
-        return baseUserMapper;
-    }
 }

@@ -4,7 +4,10 @@ import com.ethanwy.ethan.framework.base.model.AbstractUser;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.cache.CacheKeyPrefix;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
@@ -18,14 +21,19 @@ import java.util.concurrent.TimeUnit;
  */
 public class ShiroRedisCache<K, V> implements Cache<K, V> {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ShiroRedisCache.class);
+
     private long survivalTime = 5;
 
-    private String cacheKey;
+
+    private String prefix ;
+
+    private CacheKeyPrefix cacheKeyPrefix = CacheKeyPrefix.simple();
 
     private final RedisTemplate redisTemplate;
 
-    public ShiroRedisCache(String cacheKey, RedisTemplate redisTemplate) {
-        this.cacheKey = cacheKey;
+    public ShiroRedisCache(String prefix, RedisTemplate redisTemplate) {
+        this.prefix = prefix;
         this.redisTemplate = redisTemplate;
     }
 

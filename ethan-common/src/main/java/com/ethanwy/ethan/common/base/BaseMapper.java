@@ -8,7 +8,7 @@ import java.util.List;
  * @author Ethan
  * @date 2018/12/18
  */
-public interface BaseMapper<E extends AbstractEntity, M extends BaseMapper> {
+public interface BaseMapper<E extends AbstractEntity> {
 
     /**
      * 新增

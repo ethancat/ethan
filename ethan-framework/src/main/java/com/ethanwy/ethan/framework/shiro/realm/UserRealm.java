@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  * @author Ethan
  * @date 2018/12/19
  */
-
+@Component
 public class UserRealm extends AuthorizingRealm {
 
     @Autowired

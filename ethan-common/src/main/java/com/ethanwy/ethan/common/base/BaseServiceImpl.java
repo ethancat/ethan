@@ -1,10 +1,8 @@
 package com.ethanwy.ethan.common.base;
 
 import com.ethanwy.ethan.common.exception.MapperException;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +12,7 @@ import org.slf4j.LoggerFactory;
  * @author Ethan
  * @date 2018/12/18
  */
-public abstract class BaseServiceImpl<E extends AbstractEntity, M extends BaseMapper<E, M>>
+public abstract class BaseServiceImpl<E extends AbstractEntity, M extends BaseMapper<E>>
         implements BaseService<E, M> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(BaseServiceImpl.class);

@@ -1,7 +1,5 @@
 package com.ethanwy.ethan.common.base;
 
-import com.ethanwy.ethan.common.exception.MapperException;
-
 import java.util.List;
 
 /**
@@ -10,7 +8,7 @@ import java.util.List;
  * @author Ethan
  * @date 2018/12/18
  */
-public interface BaseService<E extends AbstractEntity, M extends BaseMapper<?, ?>> {
+public interface BaseService<E extends AbstractEntity, M extends BaseMapper<E>> {
 
     /**
      * 新增
